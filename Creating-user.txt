@@ -1,0 +1,6 @@
+
+INSERT INTO users (username, enabled, password) 
+VALUES ('josias2', 1, '$2a$10$9ja30uN3LnDt/6pyXsgS1OyURFBb1iKAq4PYuU7fPVO/WB4V0PDlG');
+
+la contraseña es 'qwerty'.
+
