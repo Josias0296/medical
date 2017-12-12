@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></link>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                var table = $('#pacienteTable').DataTable({
+                    "sAjaxSource": "/pacientes",
+                    "sAjaxDataProp": "",
+                    "order": [[0, "asc"]],
+                    "aoColumns": [
+                        {"mData": "idPaciente"},
+                        {"mData": "nombre"},
+                        {"mData": "apellidoPaterno"},
+                        {"mData": "apellidoMaterno"},
+                        {"mData": "telefono"},
+                        {"mData": "fechaNacimiento"},
+                        {"mData": "peso"},
+                        {"mData": "altura"},
+                        {"mData": "sangreTipo.tipoSangre"}
+                    ]
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container" style="width: fit-content">
+            <h3>Pacientes registrados</h3>
+            <table id="pacienteTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID Paciente</th>
+                        <th>Nombre</th>
+                        <th>Ap. Paterno</th>
+                        <th>Ap. Materno</th>
+                        <th>Telefono</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Tipo Sangre</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID Paciente</th>
+                        <th>Nombre</th>
+                        <th>Ap. Paterno</th>
+                        <th>Ap. Materno</th>
+                        <th>Telefono</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Tipo Sangre</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>

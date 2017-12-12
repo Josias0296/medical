@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("ready!!!!");
+
+                $("#save").click(function () {
+                    saveAlumno();
+                });
+            }
+            );
+    
+            function saveAlumno() {
+                var data = $('#form').serializeJSON;
+                data = JSON.stringify(data);
+                console.log(data);
+                
+                $.ajax({
+                    type: 'POST',
+                    url: "/areas",
+                    contentType: 'application/json; charset-utf-8',
+                    data: data,
+                })
+                        .done(function(data){
+                            alert("Data saved:" + data);
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Area</h3>
+
+            <form th:object="${area}" method="post" id="form">
+                <input type="hidden" th:field="*{idArea}"></input>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" th:field="*{nombreArea}" th:value="${nombreArea}"/>
+                </div>
+            </form>
+            <button class="btn btn-lg btn-primary btn-block" id="save">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </button>
+
+        </div>
+    </body>
+</html>

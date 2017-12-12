@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>Sigeho</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("ready!!!!");
+
+                $("#save").click(function () {
+                    addArea();
+                });
+            }
+            );
+
+            function addArea() {
+                console.log('addArea');
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    url: "/areas",
+                    dataType: "json",
+                    data: formToJSON(),
+                    success: function (data, textStatus, jqXHR) {
+                        alert('Area created successfully');
+                        window.location.replace("/areasConsulta");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert('addArea error: ' + textStatus + errorThrown);
+                    }
+                });
+            }
+
+            function formToJSON() {
+                return JSON.stringify({
+                    "nombreArea": $('#nombreArea').val()
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        <div th:replace="/menu :: menu"/>
+        <div class="container" style="width:70%">
+            <h2 class="form-signin-heading">Registrar área</h2>
+
+            <form th:object="${area}" method="post" id="form" >
+                <input type="hidden" th:field="*{idArea}"></input>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" th:field="*{nombreArea}" th:value="${nombreArea}"/>
+                </div>
+            </form>
+            <button class="btn btn-lg btn-primary btn-block" id="addArea" onclick="addArea()">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </button>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sigeho</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        <div th:replace="/menu :: menu"/>
+        <div class="jumbotron">
+            <div class="container">
+                <h2 class="form-signin-heading">Modificar Paciente</h2>
+                <br />
+                <form action="#" th:action="@{/modificarPaciente}" th:object="${pacienteM}" method="post" id="form">
+
+                    <input type="hidden"  th:field="*{idPaciente}" th:value="${idPaciente}"></input>
+                    Nombre: <input type="text" class="form-control" th:field="*{nombre}" th:value="${nombre}"></input> <br />
+                    Apellido Paterno: <input type="text" class="form-control" th:field="*{apellidoPaterno}" th:value="${apellidoPaterno}"></input> <br />
+                    Apellido Materno: <input type="text" class="form-control" th:field="*{apellidoMaterno}" th:value="${apellidoMaterno}"></input> <br />
+                    Telefono: <input type="text" class="form-control" th:field="*{telefono}" th:value="${telefono}"></input> <br />
+                    Fecha de Nacimiento: <input type="date" class="form-control" th:field="*{fechaNacimiento}" th:value="${fechaNacimiento}"></input> <br />
+                    Peso: <input type="text" class="form-control" th:field="*{peso}" th:value="${peso}"></input> <br />
+                    Altura: <input type="text" class="form-control" th:field="*{altura}" th:value="${altura}"></input> <br />
+                    Tipo de sangre: <select class="form-control" th:field="*{sangreTipo}" id="sangreTipo">
+                        <option th:each="Tiposangre : ${listaSangre}" th:value="${Tiposangre}" th:text="${Tiposangre.tipoSangre}"></option>
+                    </select><br/>
+                    <br />
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        Aceptar
+                    </button>
+                </form>
+                <a href="#" th:href="@{/paciente/cancelar}">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+                    </button>
+                </a>
+
+            </div>
+        </div>
+
+    </body>
+</html>

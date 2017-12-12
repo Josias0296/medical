@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+    <header>
+        <div th:fragment="menu">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Sistema de Gestión Hospitalaria</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Áreas
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" th:href="@{/altaArea}">Registrar</a></li>
+                                <li><a href="#" th:href="@{/areasConsulta}">Consultar</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pacientes
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" th:href="@{/altaPaciente}">Registrar</a></li>
+                                <li><a href="#" th:href="@{/pacientesConsulta}">Consultar</a></li>
+                            </ul>
+                        </li>
+                         <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultorios
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" th:href="@{/altaConsultorio}">Registrar</a></li>
+                                <li><a href="#" th:href="@{/consultoriosConsulta}">Consultar</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Personas
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Registrar</a></li>
+                                <li><a href="#">Consultar</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Citas
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Registrar</a></li>
+                                <li><a href="#">Consultar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form  th:action="@{/logout}" method="POST">
+                        <button class="btn btn-danger navbar-btn" type="submit">Salir</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+</html>

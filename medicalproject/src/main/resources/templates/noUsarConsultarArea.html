@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></link>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                var table = $('#areaTable').DataTable({
+                    "sAjaxSource": "/areas",
+                    "sAjaxDataProp": "",
+                    "order": [[0, "asc"]],
+                    "aoColumns": [
+                        {"mData": "idArea"},
+                        {"mData": "nombreArea"}
+                    ]
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <div th:replace="/menu :: menu"/>
+            <div class="container" style="width: 70%">            
+                <h3>Áreas registradas</h3>
+                <table id="areaTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID Area</th>
+                            <th>Nombre Area</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID Area</th>
+                            <th>Nombre Area</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <form  th:action="@{/logout}" method="POST">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                        Logout
+                    </button>
+                </form>
+            </div>
+    </body>
+</html>

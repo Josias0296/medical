@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:object": {
+            "context": "form"
+        },
+        "th:src": {
+            "context": "script"
+        }
+    }
+}
