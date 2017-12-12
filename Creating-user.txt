@@ -4,3 +4,4 @@ VALUES ('josias2', 1, '$2a$10$9ja30uN3LnDt/6pyXsgS1OyURFBb1iKAq4PYuU7fPVO/WB4V0P
 
 la contraseña es 'qwerty'.
 
+INSERT INTO user_roles(role, username) VALUES ('ROLE_ADMIN', 'josias2')
